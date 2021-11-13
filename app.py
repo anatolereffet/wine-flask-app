@@ -7,16 +7,20 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route("/predict", methods=["GET","POST"])
+@app.route("/predict", methods=["POST"])
 def predict():
+    # Check if request has a JSON content
     if request.json:
+        # Get the JSON as dictionnary
         req = request.get_json()
+        # Check mandatory keys
         if 'input' in req.keys():
-            classifier = joblib.load("/Users/reffet/Desktop/Deployment_Project/data/model.joblib")
+            # load model
+            classifier = joblib.load("models/model.joblib")
             prediction = classifier.predict(req["input"])
-            prediction = str(prediction[0])
-            return jsonify({"predict": prediction}), 200
-    return jsonify({"msg": "This isn't the right data input format, please verify your input"}), 200
+            #prediction = str(prediction[0])
+            return jsonify([str(pred) for pred in prediction]), 200
+    return jsonify({"msg": "This isn't the right data input format, please verify your input"})
     
 if __name__ == "__main__":
     app.run(debug=True)
