@@ -9,8 +9,37 @@
 <body>
     <div>
         <h1> Notre sujet de prédilection c'est le vin, on va essayer de t'aider à sélectionner un vin de bonne qualité  </h1>
-        <h2> Grâce à notre score tu arriveras à t'y retrouver ne t'inquiètes pas :D</h2>
-    </div>
-</body>
+        <h2> Grâce à notre score tu arriveras à t'y retrouver ne t'inquiètes pas</h2>
+        <p>Pour obtenir le score de qualité d'un vin on a besoin d'une entrée .json avec les informations suivantes pour le vin à noter:
+            <ul>
+              <li>fixed acidity</li>
+              <li> volatile acidity</li>
+              <li> citric acid</li>
+              <li>residual sugar</li>
+              <li> chlorides</li>
+                <li>  free sulfur dioxide</li>
+                  <li>  total sulfur dioxide</li>
+                    <li>  density</li>
+                      <li>  pH</li>
+                        <li>sulphates</li>
+                          <li>alcohol</li>
+                            <li>quality</li>
+            </ul>
+       
+          </p>
+          <p> Envoie ta requete .json à l'url suivant:</p>
+          <p><a href="https://wine-flask-app.herokuapp.com/predict">https://wine-flask-app.herokuapp.com/predict</a></p>
+          <p>Par exemple: Obtenir les scores pour deux vins:</p>
+          <div>input_multiple = {
+            "input": [[7.0, 0.27, 0.36, 20.7, 0.045, 45.0, 170.0, 1.001, 3.0, 0.45, 8.8],
+                      [5.0, 0.98, 0.32, 18.9, 0.050, 75.0, 122.0, 0.401, 3.1, 0.21, 1.2]]}</div>
+          <div>res = requests.post(url, json=input_multiple)</div>
+          <div>print(res.json())</div>
 
-</html>
+          <p> PS: Ou simplement fais le tourner depuis ton terminal avec la commande suivante</p>
+          <p> curl -i -H "Content-Type: application/json" -X POST -d '{"input": [[7.0, 0.27, 0.36, 20.7, 0.045, 45.0, 170.0, 1.001, 3.0, 0.45, 8.8]]}' https://wine-flask-app.herokuapp.com/predict</p>
+          
+        </div>
+      </body>
+      
+      </html>
