@@ -20,9 +20,5 @@ Set CI Github-Heroku
 
 ## Tools 
 > Flask \
-> Flask restx \
 > Git & Github \
 > Heroku
-
-## Author :
-Anatole Reffet
